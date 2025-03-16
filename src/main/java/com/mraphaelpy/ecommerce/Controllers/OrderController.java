@@ -24,24 +24,18 @@ public class OrderController {
 
     @GetMapping("/{id}")
     public ResponseEntity<Order> getOrder(@PathVariable Long id) {
-        Order order = orderService.getOrder(id);
-        if (order == null) {
-            return ResponseEntity.notFound().build();
-        }
-        return ResponseEntity.ok(order);
+        return ResponseEntity.ok(orderService.getOrder(id));
     }
 
     @GetMapping
     public ResponseEntity<List<Order>> getAllOrders() {
-        List<Order> orders = orderService.getAll();
-        return ResponseEntity.ok(orders);
+        return ResponseEntity.ok(orderService.getAll());
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Order> updateOrder(@PathVariable Long id, @RequestBody Order order) {
-        order.setId(id);
-        orderService.updateOrder(order);
-        return ResponseEntity.ok(order);
+        Order updatedOrder = orderService.updateOrder(id, order);
+        return ResponseEntity.ok(updatedOrder);
     }
 
     @DeleteMapping("/{id}")

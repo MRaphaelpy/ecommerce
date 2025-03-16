@@ -1,4 +1,4 @@
-package com.mraphaelpy.ecommerce.Controllers;
+package com.mraphaelpy.ecommerce.Entites;
 
 import lombok.Getter;
 import lombok.Setter;

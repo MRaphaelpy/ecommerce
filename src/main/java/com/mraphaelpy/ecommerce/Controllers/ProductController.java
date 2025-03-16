@@ -3,7 +3,6 @@ package com.mraphaelpy.ecommerce.Controllers;
 import com.mraphaelpy.ecommerce.Entites.Product;
 import com.mraphaelpy.ecommerce.Services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,41 +11,39 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/products")
 public class ProductController {
+
     @Autowired
-    ProductService productService;
+    private ProductService productService;
 
     @PostMapping("/create")
     public ResponseEntity<Product> createProduct(@RequestBody Product product) {
-        return new ResponseEntity<>(productService.store(product), HttpStatus.CREATED);
+        return ResponseEntity.status(201).body(productService.store(product));
     }
 
-    @GetMapping("/all")
-    public List<Product> getProducts() {
-        return productService.getAll();
+    @GetMapping
+    public ResponseEntity<List<Product>> getAllProducts() {
+        return ResponseEntity.ok(productService.getAll());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Product> getProduct(@PathVariable Long id) {
-        return new ResponseEntity<>(productService.getProduct(id), HttpStatus.FOUND);
+    public ResponseEntity<Product> getProductById(@PathVariable Long id) {
+        return ResponseEntity.ok(productService.getProductById(id));
     }
 
-    @PutMapping("/update")
-    public ResponseEntity<Product> updateProduct(@RequestBody Product product) {
-        productService.updateProduct(product);
-        return new ResponseEntity<>(product, HttpStatus.ACCEPTED);
+    @PutMapping("/update/{id}")
+    public ResponseEntity<Product> updateProduct(@PathVariable Long id, @RequestBody Product product) {
+        return ResponseEntity.accepted().body(productService.updateProduct(id, product));
     }
 
-    @PutMapping("/update-stock/{id}")
-    public ResponseEntity<Product> updateStock(@PathVariable Long id, @RequestParam int stock) {
+    @PatchMapping("/update-stock/{id}")
+    public ResponseEntity<Void> updateStock(@PathVariable Long id, @RequestParam int stock) {
         productService.updateStock(id, stock);
-        return new ResponseEntity<>(productService.getProduct(id), HttpStatus.ACCEPTED);
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/delete/{id}")
-    public Product deleteProduct(@PathVariable Long id) {
-        Product product = productService.getProduct(id);
+    public ResponseEntity<Void> deleteProduct(@PathVariable Long id) {
         productService.deleteProduct(id);
-        return product;
+        return ResponseEntity.ok().build();
     }
 }
-

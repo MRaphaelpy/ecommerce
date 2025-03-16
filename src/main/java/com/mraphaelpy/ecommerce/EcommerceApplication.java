@@ -1,4 +1,4 @@
-package com.mraphaelpy.ecommerce.Ecommerce;
+package com.mraphaelpy.ecommerce;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

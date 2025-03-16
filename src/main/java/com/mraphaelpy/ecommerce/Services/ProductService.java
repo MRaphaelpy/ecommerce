@@ -1,7 +1,7 @@
-package com.mraphaelpy.ecommerce.Ecommerce.Services;
+package com.mraphaelpy.ecommerce.Services;
 
-import com.mraphaelpy.ecommerce.Ecommerce.Entites.Product;
-import com.mraphaelpy.ecommerce.Ecommerce.Repository.ProductRepository;
+import com.mraphaelpy.ecommerce.Entites.Product;
+import com.mraphaelpy.ecommerce.Repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +19,10 @@ public class ProductService {
         return productRepository.findById(id).orElse(null);
     }
 
+    public Product getProductById(Long id) {
+        return productRepository.findById(id).orElse(null);
+    }
+
     public void deleteProduct(Long id) {
         productRepository.deleteById(id);
     }
@@ -33,6 +37,10 @@ public class ProductService {
             product.setStock(stock);
             productRepository.save(product);
         }
+    }
+    public Product getProductByIds(Long productId) {
+        return productRepository.findById(productId)
+                .orElseThrow(() -> new RuntimeException("Produto não encontrado"));
     }
 
     public java.util.List<Product> getAll() {

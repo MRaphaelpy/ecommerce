@@ -1,4 +1,4 @@
-package com.mraphaelpy.ecommerce.Ecommerce;
+package com.mraphaelpy.ecommerce;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

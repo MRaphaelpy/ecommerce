@@ -1,5 +1,5 @@
 package com.mraphaelpy.ecommerce.Controllers;
 
-public class AuthController {
+public class UserController {
 
 }

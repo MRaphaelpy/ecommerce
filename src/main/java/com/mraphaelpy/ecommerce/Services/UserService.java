@@ -1,50 +1,62 @@
 package com.mraphaelpy.ecommerce.Services;
 
-import com.mraphaelpy.ecommerce.Entites.User;
+import com.mraphaelpy.ecommerce.DTOs.UserDTO;
+import com.mraphaelpy.ecommerce.Entities.User;
+import com.mraphaelpy.ecommerce.Mappers.UserMapper;
 import com.mraphaelpy.ecommerce.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class UserService {
 
     @Autowired
-    protected UserRepository userRepository;
+    private UserRepository userRepository;
 
-    public void delete(Long id) {
-        userRepository.deleteById(id);
+    @Autowired
+    private PasswordEncoder passwordEncoder;
+
+    @Autowired
+    private UserMapper userMapper;
+
+    public void deleteByEmail(String email) {
+        userRepository.deleteByEmail(email);
     }
 
-    public java.util.List<User> getAll() {
-        return userRepository.findAll();
+    public UserDTO getUserByEmailAndPassword(String email, String password) {
+        User user = userRepository.findByEmail(email);
+        if (user != null && passwordEncoder.matches(password, user.getPassword())) {
+            return userMapper.toDTO(user); // Verificando se a senha bate
+        }
+        return null;
     }
 
-    public User getUser(Long id) {
-        return userRepository.findById(id).orElse(null);
+    public List<UserDTO> getAll() {
+        List<User> users = userRepository.findAll();
+        return users.stream()
+                .map(userMapper::toDTO)
+                .toList();
     }
 
-    public User store(User user) {
-        userRepository.save(user);
-        return user;
+    public UserDTO store(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword())); // Codificando a senha
+        User savedUser = userRepository.save(user);
+        return userMapper.toDTO(savedUser);
     }
 
-    public void updateUser(User user) {
-        userRepository.save(user);
+    public void updatePassword(String email, String password) {
+        User user = userRepository.findByEmail(email);
+        if (user != null) {
+            user.setPassword(passwordEncoder.encode(password)); // Atualizando a senha
+            userRepository.save(user);
+        }
     }
 
-   public void updatePassword(Long id, String password) {
-       User user = userRepository.findById(id).orElse(null);
-       if (user != null) {
-           user.setPassword(password);
-           userRepository.save(user);
-       }
-   }
-
-   public void updateEmail(Long id, String email) {
-       User user = userRepository.findById(id).orElse(null);
-       if (user != null) {
-           user.setEmail(email);
-           userRepository.save(user);
-       }
-   }
+    public UserDTO getUserByEmail(String email) {
+        User user = userRepository.findByEmail(email);
+        return user != null ? userMapper.toDTO(user) : null;
+    }
 }

@@ -1,7 +1,7 @@
 package com.mraphaelpy.ecommerce.Repository;
 
-import com.mraphaelpy.ecommerce.Entites.Category;
-import com.mraphaelpy.ecommerce.Entites.Product;
+import com.mraphaelpy.ecommerce.Entities.Category;
+import com.mraphaelpy.ecommerce.Entities.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

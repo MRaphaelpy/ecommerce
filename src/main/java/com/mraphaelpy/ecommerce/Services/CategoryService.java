@@ -1,7 +1,7 @@
 package com.mraphaelpy.ecommerce.Services;
 
-import com.mraphaelpy.ecommerce.Entites.Category;
-import com.mraphaelpy.ecommerce.Entites.Product;
+import com.mraphaelpy.ecommerce.Entities.Category;
+import com.mraphaelpy.ecommerce.Entities.Product;
 import com.mraphaelpy.ecommerce.Repository.CategoryRepository;
 import com.mraphaelpy.ecommerce.Repository.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;

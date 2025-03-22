@@ -1,6 +1,6 @@
 package com.mraphaelpy.ecommerce.Controllers;
 
-import com.mraphaelpy.ecommerce.Entites.OrderItem;
+import com.mraphaelpy.ecommerce.Entities.OrderItem;
 import com.mraphaelpy.ecommerce.Services.OrderItemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

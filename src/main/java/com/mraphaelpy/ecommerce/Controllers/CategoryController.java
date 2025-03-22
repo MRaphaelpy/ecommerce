@@ -1,6 +1,6 @@
 package com.mraphaelpy.ecommerce.Controllers;
 
-import com.mraphaelpy.ecommerce.Entites.Product;
+import com.mraphaelpy.ecommerce.Entities.Product;
 import com.mraphaelpy.ecommerce.Services.CategoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;

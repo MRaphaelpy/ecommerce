@@ -1,4 +1,4 @@
-package com.mraphaelpy.ecommerce.Entites;
+package com.mraphaelpy.ecommerce.Entities;
 
 import jakarta.persistence.*;
 import lombok.Getter;

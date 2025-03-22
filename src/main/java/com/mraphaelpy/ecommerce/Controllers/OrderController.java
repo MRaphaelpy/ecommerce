@@ -1,6 +1,6 @@
 package com.mraphaelpy.ecommerce.Controllers;
 
-import com.mraphaelpy.ecommerce.Entites.Order;
+import com.mraphaelpy.ecommerce.Entities.Order;
 import com.mraphaelpy.ecommerce.Services.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

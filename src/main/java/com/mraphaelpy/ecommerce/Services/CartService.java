@@ -1,15 +1,13 @@
 package com.mraphaelpy.ecommerce.Services;
 
-import com.mraphaelpy.ecommerce.Entites.Cart;
-import com.mraphaelpy.ecommerce.Entites.CartItem;
-import com.mraphaelpy.ecommerce.Entites.Product;
+import com.mraphaelpy.ecommerce.Entities.Cart;
+import com.mraphaelpy.ecommerce.Entities.Product;
 import com.mraphaelpy.ecommerce.Repository.CartRepository;
 import com.mraphaelpy.ecommerce.Repository.CartItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import jakarta.transaction.Transactional;
-import java.util.Optional;
 
 @Service
 public class CartService {

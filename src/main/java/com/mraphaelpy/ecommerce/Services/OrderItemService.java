@@ -1,6 +1,6 @@
 package com.mraphaelpy.ecommerce.Services;
 
-import com.mraphaelpy.ecommerce.Entites.OrderItem;
+import com.mraphaelpy.ecommerce.Entities.OrderItem;
 import com.mraphaelpy.ecommerce.Repository.OrderItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

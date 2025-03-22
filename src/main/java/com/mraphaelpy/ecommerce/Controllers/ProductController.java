@@ -1,8 +1,9 @@
 package com.mraphaelpy.ecommerce.Controllers;
 
-import com.mraphaelpy.ecommerce.Entites.Product;
+import com.mraphaelpy.ecommerce.Entities.Product;
 import com.mraphaelpy.ecommerce.Services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,7 +18,8 @@ public class ProductController {
 
     @PostMapping("/create")
     public ResponseEntity<Product> createProduct(@RequestBody Product product) {
-        return ResponseEntity.status(201).body(productService.store(product));
+        Product savedProduct = productService.store(product);
+        return new ResponseEntity<>(savedProduct, HttpStatus.CREATED);
     }
 
     @GetMapping

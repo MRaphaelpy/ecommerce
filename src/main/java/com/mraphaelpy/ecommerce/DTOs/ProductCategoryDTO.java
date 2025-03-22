@@ -1,4 +1,4 @@
-package com.mraphaelpy.ecommerce.Entites;
+package com.mraphaelpy.ecommerce.DTOs;
 
 import lombok.Getter;
 import lombok.Setter;

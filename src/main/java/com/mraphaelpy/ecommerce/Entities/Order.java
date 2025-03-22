@@ -1,4 +1,4 @@
-package com.mraphaelpy.ecommerce.Entites;
+package com.mraphaelpy.ecommerce.Entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;

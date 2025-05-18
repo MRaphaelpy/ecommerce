@@ -3,7 +3,6 @@ package com.mraphaelpy.ecommerce.Services;
 import com.mraphaelpy.ecommerce.Entities.Cart;
 import com.mraphaelpy.ecommerce.Entities.Product;
 import com.mraphaelpy.ecommerce.Repository.CartRepository;
-import com.mraphaelpy.ecommerce.Repository.CartItemRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,9 +16,6 @@ public class CartService {
 
     @Autowired
     private CartRepository cartRepository;
-
-    @Autowired
-    private CartItemRepository cartItemRepository;
 
     public Cart getCart(Long cartId) {
         return cartRepository.findById(cartId)

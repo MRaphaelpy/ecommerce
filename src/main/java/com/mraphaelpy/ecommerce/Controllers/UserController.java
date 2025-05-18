@@ -2,7 +2,6 @@ package com.mraphaelpy.ecommerce.Controllers;
 
 import com.mraphaelpy.ecommerce.DTOs.UserDTO;
 import com.mraphaelpy.ecommerce.Entities.User;
-import com.mraphaelpy.ecommerce.Mappers.UserMapper;
 import com.mraphaelpy.ecommerce.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -16,9 +15,6 @@ public class UserController {
 
     @Autowired
     private UserService userService;
-
-    @Autowired
-    private UserMapper userMapper;
 
     @PostMapping("/create")
     public ResponseEntity<UserDTO> createUser(@RequestBody User user) {

@@ -29,7 +29,7 @@ public class UserService {
     public UserDTO getUserByEmailAndPassword(String email, String password) {
         User user = userRepository.findByEmail(email);
         if (user != null && passwordEncoder.matches(password, user.getPassword())) {
-            return userMapper.toDTO(user); // Verificando se a senha bate
+            return userMapper.toDTO(user);
         }
         return null;
     }
@@ -42,7 +42,7 @@ public class UserService {
     }
 
     public UserDTO store(User user) {
-        user.setPassword(passwordEncoder.encode(user.getPassword())); // Codificando a senha
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         User savedUser = userRepository.save(user);
         return userMapper.toDTO(savedUser);
     }
@@ -50,7 +50,7 @@ public class UserService {
     public void updatePassword(String email, String password) {
         User user = userRepository.findByEmail(email);
         if (user != null) {
-            user.setPassword(passwordEncoder.encode(password)); // Atualizando a senha
+            user.setPassword(passwordEncoder.encode(password));
             userRepository.save(user);
         }
     }
